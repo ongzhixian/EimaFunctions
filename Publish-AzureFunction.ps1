@@ -1,0 +1,1 @@
+func azure functionapp publish eima-function-app
