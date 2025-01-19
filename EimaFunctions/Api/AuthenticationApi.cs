@@ -23,9 +23,7 @@ public class AuthenticationApi(ILogger<AuthenticationApi> logger)
         logger.LogInformation("C# HTTP trigger function processed a request.");
         
         //var content = await new StreamReader(req.Body).ReadToEndAsync();
-        
          //var authenticateUserRequest2 = await JsonSerializer.DeserializeAsync<AuthenticateUserRequest>(req.Body, JsonSerialization.Options);
-        //
         // if (authenticateUserRequest == null) return new BadRequestResult();
         
         logger.LogInformation("Returns OK with AuthenticateUserResponse {username}", authenticateUserRequest.Username);
