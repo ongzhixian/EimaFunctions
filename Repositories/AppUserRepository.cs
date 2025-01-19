@@ -25,7 +25,7 @@ public class AppUserRepository
 
     public async Task AddUserAsync(string username, string hash, string salt)
     {
-        await appUserCollection.InsertOneAsync(new AppUser
+        await appUserCollection.InsertOneAsync(new EimaFunctions.DbModels.AppUser
         {
             Username = username.ToUpperInvariant(),
             PasswordHash = hash,
