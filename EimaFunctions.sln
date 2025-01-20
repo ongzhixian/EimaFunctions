@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EimaFunctions", "EimaFuncti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EimaFunctions.Tests", "EimaFunctions.Tests\EimaFunctions.Tests.csproj", "{5CA3A01F-AA8B-42F3-9E7D-DD6C3509D883}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EimaFunctions.E2e", "EimaFunctions.E2e\EimaFunctions.E2e.csproj", "{2809FCC9-546C-4371-985F-CE562B77E8CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{5CA3A01F-AA8B-42F3-9E7D-DD6C3509D883}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CA3A01F-AA8B-42F3-9E7D-DD6C3509D883}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CA3A01F-AA8B-42F3-9E7D-DD6C3509D883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2809FCC9-546C-4371-985F-CE562B77E8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2809FCC9-546C-4371-985F-CE562B77E8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2809FCC9-546C-4371-985F-CE562B77E8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2809FCC9-546C-4371-985F-CE562B77E8CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
