@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+    
+<!-- 
+
+  <RunConfiguration>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion> 
+  </RunConfiguration>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="MSTest">
+        <Configuration>
+          <Collectors>
+            <Collector uri="datacollector://microsoft/CodeCoverage/2.0" friendlyName="Code Coverage" enabled="true">
+              <Configuration>
+                <Modules>
+                  <Module>
+                    <Name>PlaywrightSharp</Name>
+                    <Include>True</Include>
+                  </Module>
+                </Modules>
+              </Configuration>
+            </Collector>
+          </Collectors>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+    
+  <TestRunParameters>
+    <Parameter name="Playwright.SlowMo" value="500" /> 
+    <Parameter name="Playwright.Headless" value="false" /> 
+  </TestRunParameters>
+-->
+
+    <!-- MSTest adapter -->
+    <MSTest>
+        <Parallelize>
+            <Workers>4</Workers>
+            <Scope>ClassLevel</Scope>
+        </Parallelize>
+    </MSTest>
+    
+    <!-- General run configuration -->
+    <RunConfiguration>
+        <EnvironmentVariables>
+            <!-- For debugging selectors, it's recommend to set the following environment variable -->
+            <DEBUG>pw:api</DEBUG>
+            <DEBUG>pw:browser</DEBUG>
+            
+        </EnvironmentVariables>
+    </RunConfiguration>
+    
+    <!-- Playwright -->
+    <Playwright>
+        <BrowserName>chromium</BrowserName>
+        <ExpectTimeout>5000</ExpectTimeout>
+        <LaunchOptions>
+            <Headless>false</Headless>
+            <Channel>msedge</Channel>
+            <SlowMo>10000</SlowMo>
+        </LaunchOptions>
+    </Playwright>
+    
+</RunSettings>
