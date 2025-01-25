@@ -7,12 +7,19 @@ using System.Security.Claims;
 
 namespace EimaFunctions.Repositories;
 
-public class AppUserRepository
+public interface IAppUserRepository
+{
+    Task AddUserAsync(string username, string hash, string salt);
+    Task<List<AppUser>> GetUserList(int pageNumber, byte pageSize = 10);
+}
+
+public class AppUserRepository : IAppUserRepository
 {
     private readonly IMongoCollection<AppUser> appUserCollection;
     //private readonly IMongoDatabase database;
 
-    public AppUserRepository(IConfiguration configuration,
+    public AppUserRepository(
+        //IConfiguration configuration,
         [FromKeyedServices("minitools")] IMongoDatabase database)
     {
         //var connectionUri = configuration["ConnectionStrings:WareLogixMongoDb"];
@@ -80,7 +87,7 @@ public class AppUserRepository
         return await appUserCollection.CountDocumentsAsync(filter);
     }
 
-    internal async Task<List<AppUser>> GetUserList(int pageNumber, byte pageSize = 10)
+    public async Task<List<AppUser>> GetUserList(int pageNumber, byte pageSize = 10)
     {
         var filter = Builders<AppUser>.Filter.Empty;
 

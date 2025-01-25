@@ -63,6 +63,6 @@ builder.Services.Configure<JsonSerializerOptions>(options =>
 //     options.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 // });
 
-builder.Services.AddScoped<AppUserRepository>();
+builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 
 builder.Build().Run();
