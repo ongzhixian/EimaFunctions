@@ -7,9 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using MongoDB.Driver;
 
 namespace EimaFunctions.Api;
 
@@ -19,7 +17,6 @@ public class AppUserApi
     private readonly IAppUserRepository appUserRepository;
     public AppUserApi(
         ILogger<AppUserApi> logger,
-        [FromKeyedServices("minitools")] IMongoDatabase database,
         [FromServices] IAppUserRepository appUserRepository)
     {
         this.logger = logger;
@@ -56,11 +53,18 @@ public class AppUserApi
     [OpenApiRequestBody("application/json", typeof(RegisterUserRequest), Description = "JSON request body containing { username, password }")]
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(string), Description = "The OK response message containing a JSON result.")]
     public async Task<IActionResult> ListAppUser(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "app-user")] ListAppUserRequest request)
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "app-user")]HttpRequest req
+        )
     {
-        logger.LogInformation("DEV: ListAppUser called");
-
-        var appUserList = await appUserRepository.GetUserList(1);
+        // Unfortunately, there is no way to bind to query parameters 
+        // Reference: https://github.com/Azure/azure-functions-host/issues/7610
+        // So we bind manually
+        var query = System.Web.HttpUtility.ParseQueryString(req.QueryString.ToString());
+        ListAppUserRequest request = new ListAppUserRequest(query);
+            
+        logger.LogInformation("DEV: ListAppUser called {PageNumber}", request.Page);
+        
+        var appUserList = await appUserRepository.GetUserList(request.Page);
 
         ListAppUserResponse response = new()
         {
