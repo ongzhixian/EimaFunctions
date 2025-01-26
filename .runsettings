@@ -33,6 +33,10 @@
   </TestRunParameters>
 -->
 
+    <TestRunParameters>
+        <Parameter name="MyCustomTestRunParameter" value="MyCustomTestRunValue" />
+    </TestRunParameters>
+
     <!-- MSTest adapter -->
     <MSTest>
         <Parallelize>
@@ -47,7 +51,6 @@
             <!-- For debugging selectors, it's recommend to set the following environment variable -->
             <DEBUG>pw:api</DEBUG>
             <DEBUG>pw:browser</DEBUG>
-            
         </EnvironmentVariables>
     </RunConfiguration>
     

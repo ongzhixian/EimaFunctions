@@ -1,0 +1,5 @@
+{
+    "functionapp": {
+        "baseUrl": "http://localhost:7071"
+    }
+}
